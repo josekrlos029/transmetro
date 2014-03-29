@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns		= "http://www.w3.org/ns/widgets"
+	xmlns:gap	= "http://phonegap.com/ns/1.0"
+	id		= "com.Innovar.transmetro"
+	version 	= "1.0.0">
+
+	<name>Transmetro</name>
+
+	<description>
+		App Tansmetro Barranquilla
+	</description>
+
+	<author href="https://www.facebook.com/josekrlos029"
+		email="josekrlos029@hotmail.com">
+		José Carlos Jimenez Montenegro 
+	</author>
+
+<preference name="phonegap-version" value="2.9.0" />
+<preference name="orientation" value="portrait" />
+	<gap:platforms>
+		<gap:platform name="android" minVersion="2.1" />
+		<gap:platform name="webos" />
+		<gap:platform name="symbian.wrt" />
+		<gap:platform name="blackberry" project="widgets"/>
+                <gap:platform name="ios" />
+	</gap:platforms>
+
+	<feature name="http://api.phonegap.com/1.0/geolocation"/>
+	<feature name="http://api.phonegap.com/1.0/network"/>
+        <feature name="http://api.phonegap.com/1.0/notification"/>
+
+</widget>
