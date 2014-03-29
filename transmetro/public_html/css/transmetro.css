@@ -15,16 +15,17 @@ body{
 }
 
 #footer{
-   height: 80px;
+   height: 60px;
    width: 100%;
-   
+   background-color: #ebeaea;
 }
 
 #header{
-    height: 80px;
+    height: 50px;
     width: 100%;
     border: solid black 0.5px;
     border-bottom: solid #405da3 4px;
+    background-color: #ebeaea;
 }
 
 #mapa{
