@@ -23,8 +23,7 @@ body{
 #header{
     height: 50px;
     width: 100%;
-    border: solid black 0.5px;
-    border-bottom: solid #405da3 4px;
+    border-bottom: solid #405da3 5px;
     background-color: #ebeaea;
 }
 
