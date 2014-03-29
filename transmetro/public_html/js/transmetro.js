@@ -32,6 +32,9 @@ document.addEventListener("deviceready", onDeviceReady, false);
                 };
                 var marcador = new google.maps.Marker(marker);
                 marcador.setMap(mapa);
+                $.getJSON('http://servicedatosabiertoscolombia.cloudapp.net/v1/Alcaldia_de_barranquilla/routes?$format=json', {format: "json"}, function(data) { 
+                    alert(data);
+                });
     }
 
     // La función 'callback' onError recibe un objeto `PositionError`.
