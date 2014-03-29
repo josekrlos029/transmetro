@@ -34,15 +34,20 @@ and open the template in the editor.
     // onSuccess Geolocation
     //
     function onSuccess(position) {
-        
+        //OBTENGO MI UBICACIÓN MOVIL
           var punto = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+                localStorage.setItem('ubicacion',punto);
+            //CONFIGURACIÓN DEL MAPA
                 var config = {
                     zoom:16,
                     center:punto,
                     mapTypeId: google.maps.MapTypeId.ROADMAP 
                 };
-         
+                
+                //INICIALIZO EL MAPA
                 var mapa = new google.maps.Map($('#mapa')[0],config);
+                
+                //DEFINO Y CREO EL MARCADOR DE ACUERDO A MI UBICACIÓN
                 var marker = {
                     position: punto,
                     titulo:"mi ubicación",
@@ -50,10 +55,53 @@ and open the template in the editor.
                     animation: google.maps.Animation.DROP,
                     draggable:false
                 };
-                var marcador = new google.maps.Marker(marker);
-                marcador.setMap(mapa);
                 
-    }
+                var marcador = new google.maps.Marker(marker);
+                marcador.setMap(mapa); 
+                
+                
+                //DEFINIR INPUT PARA REALIZAR LA SGUIENTE OPCIÓN
+                var input = /** @type {HTMLInputElement} */
+                document.getElementById('inputt');
+                mapa.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
+                var autocomplete = new google.maps.places.Autocomplete(input);
+                autocomplete.bindTo('bounds', mapa);
+                var infowindow = new google.maps.InfoWindow();
+                
+            google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            infowindow.close();
+            //marker.setVisible(false);
+            var place = autocomplete.getPlace();
+            if (!place.geometry) {
+              return;
+            }
+            
+            localStorage.setItem('destino',place.geometry.location);
+            
+            var directionsDisplay = new google.maps.DirectionsRenderer();
+            directionsDisplay.setMap(mapa);
+            
+            var directionsService = new google.maps.DirectionsService();
+            var request = {
+                origin:localStorage.getItem('ubicacion'),
+                destination:localStorage.getItem('destino'),
+                travelMode: google.maps.TravelMode.DRIVING
+            };
+            
+             
+            directionsService.route(request, function(result, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                directionsDisplay.setDirections(result);
+            }
+           
+            });
+                
+  });
+                
+                
+                
+                
+    }//FIN ONSUCCES
 
     // La función 'callback' onError recibe un objeto `PositionError`.
     //
@@ -65,8 +113,9 @@ and open the template in the editor.
         </script>
     </head>
     <body>
-        <div id="header"><div style="float: right;"><a style="top: 5px" href="#"><img alt="logo" src="image/icons/LogoTransmetro.png" height="35" width="140" /></a></div></div>
+        <div id="header"><div style="margin: 0; padding: 0;"><img alt="borde" id="border" src="image/borders/BorderTop-Header.png" height="5"  /></div><div style="float: right;"><a style="margin-top: 5px" href="#"><img alt="logo" src="image/icons/LogoTransmetro.png" height="35" width="140" /></a></div></div>
         <div id="mapa"></div>
+        <input id="inputt" type="text" placeholder="Elige Tu Destino"/> 
         <div id="footer">.</div>
     </body>
 </html>
