@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Transmetro</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/transmetro.css" rel="stylesheet" type="text/css" media="screen"/>
@@ -23,8 +23,11 @@ and open the template in the editor.
     // PhoneGap esta listo
     //
     function onDeviceReady() {
-        alert("entras?");
         navigator.geolocation.getCurrentPosition(onSuccess, onError);
+        var ventana_ancho = $(window).width();
+        var ventana_alto = $(window).height();
+        $("#mapa").css("width",ventana_ancho);
+        $("#mapa").css("height",ventana_alto - 40);
     }
 
     // onSuccess Geolocation
@@ -48,9 +51,7 @@ and open the template in the editor.
                 };
                 var marcador = new google.maps.Marker(marker);
                 marcador.setMap(mapa);
-                $.getJSON('http://servicedatosabiertoscolombia.cloudapp.net/v1/Alcaldia_de_barranquilla/routes?$format=json', {format: "json"}, function(data) { 
-                    alert(data);
-                });
+                
     }
 
     // La función 'callback' onError recibe un objeto `PositionError`.
