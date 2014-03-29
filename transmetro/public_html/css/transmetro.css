@@ -25,14 +25,19 @@ body{
     width: 100%;
     border-bottom: solid #405da3 5px;
     background-color: #ebeaea;
+    margin:0;
+   padding: 0;
 }
 
 #mapa{
     height: 300px;
     width: 200px;
+    margin:0;
+   padding: 0;
 }
 #border-top{
     height: auto;
    width: 100%;
    margin:0;
+   padding: 0;
 }
