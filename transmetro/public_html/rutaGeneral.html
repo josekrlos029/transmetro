@@ -65,7 +65,7 @@ function callback(response, status) {
 }      
         $.getJSON("http://transmetro.innovardesign.com/Administrador/obtenerParadas",function(result){
                 $.each(result, function (i, item) { 
-                 var dest = "("+item.lat+","+item.lon+")";   
+                 var dest = new google.maps.LatLng(item.lan, item.lon);   
                 var service = new google.maps.DistanceMatrixService();
   service.getDistanceMatrix(
     {
