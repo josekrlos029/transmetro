@@ -28,7 +28,7 @@ and open the template in the editor.
         var ventana_alto = $(window).height();
         $("#mapa").css("width",ventana_ancho);
         $("#mapa").css("height",ventana_alto - 110);
-        $("#border").css("width",ventana_ancho);
+        $(".border").css("width",ventana_ancho);
     }
 
     // onSuccess Geolocation
@@ -63,7 +63,7 @@ and open the template in the editor.
                 
                 //DEFINIR INPUT PARA REALIZAR LA SGUIENTE OPCIÓN
                 var input = /** @type {HTMLInputElement} */
-                document.getElementById('inputt');
+                document.getElementById('input');
                 mapa.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
                 var autocomplete = new google.maps.places.Autocomplete(input);
                 autocomplete.bindTo('bounds', mapa);
@@ -79,21 +79,7 @@ and open the template in the editor.
             
             localStorage.setItem('destino',place.geometry.location);
             location.href="rutaGeneral.html"; 
-            /*var directionsDisplay = new google.maps.DirectionsRenderer();
-            directionsDisplay.setMap(mapa);
             
-            var directionsService = new google.maps.DirectionsService();
-            var request = {
-                origin:localStorage.getItem('ubicacion'),
-                destination:localStorage.getItem('destino'),
-                travelMode: google.maps.TravelMode.DRIVING
-            };
-            
-             
-            directionsService.route(request, function(result, status) {
-            if (status == google.maps.DirectionsStatus.OK) {
-                directionsDisplay.setDirections(result);
-            }*/
            
             });
                 
@@ -114,12 +100,12 @@ and open the template in the editor.
         </script>
     </head>
     <body>
-        <div id="header"><div style="margin: 0; padding: 0;margin-top: -10px"><img style="margin: 0; padding: 0; " alt="borde" id="border" src="image/borders/BorderTop-Header.png" height="5"  /></div><div style="float: right;"><a style="margin-top: 5px" href="#"><img alt="logo" src="image/icons/LogoTransmetro.png" height="35" width="140" /></a></div></div>
+        <div id="header"><div style="margin: 0; padding: 0;margin-top: -10px"><img style="margin: 0; padding: 0; " alt="borde" class="border" src="image/borders/BorderTop-Header.png" height="5"  /></div><div style="float: right;"><a style="margin-top: 5px" href="#"><img alt="logo" src="image/icons/LogoTransmetro.png" height="35" width="140" /></a></div></div>
         <div id="mapa"></div>
         <input id="input" type="text" placeholder="¿Hacia Donde Vas?"/> 
         
         <div>
-            <img style="margin: 0; padding: 0; " alt="borde" id="border" src="image/borders/BorderTop-Header.png" height="5"  />
+            <img style="margin: 0; padding: 0; " alt="borde" class="border" src="image/borders/BorderTop-Header.png" height="5"  />
         </div>
         <div id="footer">
             <table style="width: 100%; height: 60px">
