@@ -120,13 +120,13 @@ function buscarCercano(){
 }
 
 function trazarRutaAlimentadora(idMenor){
-    
+    alert(estaciones[idMenor].id);
     $("#pasos").removeAttr("hidden");
     var paradas = new Array();
     var con=0;
     $.getJSON("http://transmetro.innovardesign.com/Administrador/obtenerParadasPoridRuta/"+estaciones[idMenor].id,function(result){
                 $.each(result, function (i, item) {
-                paradas[con]= [item.lat,item.lon];
+                paradas.push([item.lat,item.lon]);
                 con++;
          });
          });
