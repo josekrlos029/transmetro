@@ -135,9 +135,8 @@ function trazarRutaAlimentadora(idMenor){
 
 function dibujarRuta(paradas){
     alert("entró");
-    var path = [paradas];
       map.drawPolyline({
-        path: path,
+        path: paradas,
         strokeColor: '#405da3',
         strokeOpacity: 0.6,
         strokeWeight: 6
