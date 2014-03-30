@@ -75,7 +75,7 @@ function callback(response, status) {
       unitSystem: google.maps.UnitSystem.METRIC,
       avoidHighways: false,
       avoidTolls: false
-    }, function(){
+    }, function(response, status){
           if (status != google.maps.DistanceMatrixStatus.OK) {
     alert('Error was: ' + status);
   } else {
