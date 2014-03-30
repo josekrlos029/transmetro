@@ -47,7 +47,7 @@ $(document).ready(function(){
                 $.each(result, function (i, item) {
                 calculateDistances(ubicacion,new google.maps.LatLng(item.lat,item.lon));
          });
-         }).done(function(){alert(distancias[0])});
+         });
          
         function calculateDistances(start,end) {
             
@@ -80,7 +80,7 @@ $(document).ready(function(){
     }
   }
   }
-       
+       alert(distancias[0]);
        
     });
         </script>
