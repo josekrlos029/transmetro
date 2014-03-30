@@ -30,11 +30,14 @@ $(document).ready(function(){
         
         $.getJSON("http://transmetro.innovardesign.com/Administrador/obtenerParadas",function(result){
                 $.each(result, function (i, item) { 
-                 alert("2");   
-                //calculateDistances(ubicacion,new google.maps.LatLng(item.lat,item.lon));
+                
         });
     });
-    
+    new GMaps({
+        div: '#mapa',
+        lat: -12.043333,
+        lng: -77.028333
+     });
     });
         </script>
     </head>
