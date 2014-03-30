@@ -85,10 +85,11 @@ and open the template in the editor.
             $.getJSON("http://transmetro.innovardesign.com/Administrador/obtenerParadas",function(result){
                 $.each(result, function (i, item) {
                 calculateDistances(punto,new google.maps.LatLng(item.lat,item.lon));
+                alert(a[i]);
             });
             });
             
-            alert(a[0]);
+           
             //localStorage.setItem('destino',place.geometry.location);
             //location.href="rutaGeneral.html"; 
             
