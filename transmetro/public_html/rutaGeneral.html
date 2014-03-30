@@ -85,34 +85,20 @@ $(document).ready(function(){
                        
             coordenadas2=coordenadas2.replace(")","");
             coordenadas2=coordenadas2.replace("(","");
-            var lista2=coordenadas.split(",");
-            var dest=new google.maps.LatLng(lista2[0],lista2[1]);
-    var punto = new google.maps.LatLng(lista[0],lista[1]);
-    var config = {
-            zoom:16,
-            center:punto,
-            mapTypeId: google.maps.MapTypeId.ROADMAP 
-        };
-        
-        
-        var mapa = new google.maps.Map($('#mapa')[0],config);
-        var directionsDisplay = new google.maps.DirectionsRenderer();
-            directionsDisplay.setMap(mapa);
-            
-            var directionsService = new google.maps.DirectionsService();
-            var request = {
-                origin:punto,
-                destination:dest,
-                travelMode: google.maps.TravelMode.DRIVING,
-                disableDefaultUI: true 
-            };
-            
-             
-            directionsService.route(request, function(result, status) {
-            if (status == google.maps.DirectionsStatus.OK) {
-                directionsDisplay.setDirections(result);
-            }
-    
+            var lista2=coordenadas2.split(",");
+   var map = new GMaps({
+  div: '#mapa',
+  lat: lista[0],
+  lng: lista[1]
+});
+    map.drawRoute({
+  origin: [lista[0], lista[1]],
+  destination: [lista2[0], lista2[1]],
+  travelMode: 'driving',
+  strokeColor: '#db001b',
+  strokeOpacity: 0.6,
+  strokeWeight: 6
+});
     });
             </script>
     </head>
