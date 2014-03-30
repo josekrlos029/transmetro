@@ -78,8 +78,8 @@ and open the template in the editor.
             }
             
             localStorage.setItem('destino',place.geometry.location);
-            
-            var directionsDisplay = new google.maps.DirectionsRenderer();
+            location.href="rutaGeneral.html"; 
+            /*var directionsDisplay = new google.maps.DirectionsRenderer();
             directionsDisplay.setMap(mapa);
             
             var directionsService = new google.maps.DirectionsService();
@@ -93,7 +93,7 @@ and open the template in the editor.
             directionsService.route(request, function(result, status) {
             if (status == google.maps.DirectionsStatus.OK) {
                 directionsDisplay.setDirections(result);
-            }
+            }*/
            
             });
                 
