@@ -44,17 +44,13 @@ $(document).ready(function(){
         lng: lista[1]
      });
      
-     var starts= [];
-     var ends =[]
+    
      $.getJSON("http://transmetro.innovardesign.com/Administrador/obtenerParadas",function(result){
                 $.each(result, function (i, item) {
-                starts.push(ubicacion);
-                ends.push(new google.maps.LatLng(item.lat,item.lon));
+                calculateDistances(ubicacion,new google.maps.LatLng(item.lat,item.lon));
          });
          });
-        
-       calculateDistances(starts,ends);
-       
+
         function calculateDistances(start,end) {
             
             var service = new google.maps.DistanceMatrixService();
