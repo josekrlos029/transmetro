@@ -164,7 +164,7 @@ function dibujarRuta(paradas){
 
 function agregarMarcador(idEstacion){
     
-    var icon="";var content ="";
+    /*var icon="";var content ="";
     if (band==1){
         icon="image/icons/PositionExpressos.png";
         content= '<p>Estación Mas Cercana: '+estaciones[idEstacion].nombre+'</p>';
@@ -175,20 +175,20 @@ function agregarMarcador(idEstacion){
         band=1;
         content ='<p>Estación Mas Cercana a Tu destino: '+estaciones[idEstacion].nombre+'</p>';
         alert("b2");
-    
+    */
             map.addMarker({
                 lat: estaciones[idEstacion].lat,
                 lng: estaciones[idEstacion].lon,
                 title: 'Estación: '+estaciones[idEstacion].Nombre ,
-                icon: icon,
+                icon: "image/icons/PositionExpressos.png",
                 infoWindow: {
-                content:content
+                content:'<p>Estación Mas Cercana a Tu destino: '+estaciones[idEstacion].nombre+'</p>'
                 }
             });
-            
+            /*
             if(band==0){
                 pasoDestino();
-            }
+            }*/
         }
      
     
