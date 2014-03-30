@@ -17,9 +17,7 @@ and open the template in the editor.
         <script src="js/gmaps.js" type="text/javascript" ></script>
         <script src="js/envios.js" type="text/javascript" ></script>
         <script src="js/transmetro.js" type="text/javascript" ></script>
-        <script>
-      var a=[];
-     var cont=0;         
+        <script>        
 $(document).ready(function(){
     //var listaDistancias=new array();
         var ventana_ancho = $(window).width();
@@ -43,16 +41,16 @@ $(document).ready(function(){
         lat: lista[0],
         lng: lista[1]
      });
-     
+     var distancias=[];
     
      $.getJSON("http://transmetro.innovardesign.com/Administrador/obtenerParadas",function(result){
                 $.each(result, function (i, item) {
                 calculateDistances(ubicacion,new google.maps.LatLng(item.lat,item.lon));
          });
-         });
-
+         }).done(function(){alert("terminó");});
+         
         function calculateDistances(start,end) {
-            alert("entra");
+            
             var service = new google.maps.DistanceMatrixService();
             service.getDistanceMatrix(
               {
@@ -78,6 +76,7 @@ $(document).ready(function(){
       
       for (var j = 0; j < results.length; j++) {
          alert(results[j].distance.text);
+         distancias.push(results[j].distance.text);
       }
     }
   }
@@ -85,11 +84,6 @@ $(document).ready(function(){
        
        
     });
-   
-function imprimirPrimerVec(){
-    alert(a[0]);
-}
-
         </script>
     </head>
     <body>
