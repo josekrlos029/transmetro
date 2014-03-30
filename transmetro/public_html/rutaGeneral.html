@@ -83,6 +83,7 @@ function paso1(){
 }
 
 function buscarCercano(){
+    
     alert("bc");
     var menor = 9999999999999;
     var idMenor;
@@ -93,7 +94,13 @@ function buscarCercano(){
        }
     }
     alert("id EStacion:"+idMenor);
-   agregarMarcador(idMenor);
+   if(band==0){
+        buscarCercano();
+        band=1;
+    }else{
+        agregarMarcador(idMenor);
+    }
+        
    
 }
 
@@ -102,9 +109,9 @@ function agregarMarcador(idEstacion){
     for(var i = 0; i<estaciones.length;i++){
         if(estaciones[i].id==idEstacion){
             map.addMarker({
-                lat: -12.043333,
-                lng: -77.028333,
-                title: 'Lima',
+                lat: estaciones[i].lat,
+                lng: estaciones[i].lon,
+                title: 'Estación Cercana',
                 infoWindow: {
                 content: '<p>Estación Mas Cercana</p>'
                 }
