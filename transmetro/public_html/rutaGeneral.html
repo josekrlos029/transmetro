@@ -65,10 +65,7 @@ $(document).ready(function(){
                 avoidHighways: false,
                 avoidTolls: false
               }, callback);
-            
-          }
-
-function callback(response, status) {
+              function callback(response, status) {
   if (status != google.maps.DistanceMatrixStatus.OK) {
     alert('Error was: ' + status);
   } else {
@@ -87,6 +84,11 @@ function callback(response, status) {
     }
   }
   }
+  
+  
+          }
+
+
         </script>
     </head>
     <body>
