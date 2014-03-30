@@ -21,7 +21,7 @@ and open the template in the editor.
             
             
 $(document).ready(function(){
-    //var listaDistancias=new array();
+    var listaDistancias=new array();
         var ventana_ancho = $(window).width();
         var ventana_alto = $(window).height();
         $("#mapa").css("width",ventana_ancho);
@@ -33,7 +33,7 @@ $(document).ready(function(){
          var distancias=new Array();
          var a=new Array();
          var cont=0;
-         /*
+    
          $.getJSON("http://transmetro.innovardesign.com/Administrador/obtenerParadas",function(result){
                 $.each(result, function (i, item) {
                 calculateDistances(ubicacion,new google.maps.LatLng(item.lat,item.lon));
@@ -73,7 +73,7 @@ $(document).ready(function(){
                       }
                     }
                     }
-  */
+  
   var coordenadas = ubicacion;
                        
             coordenadas=coordenadas.replace(")","");
@@ -91,7 +91,7 @@ $(document).ready(function(){
   div: '#mapa',
   lat: lista[0],
   lng: lista[1],
-  zoom: 7,
+  zoom: 10,
   zoomControl : false,
     panControl : false,
     streetViewControl : false,
@@ -112,7 +112,7 @@ $(document).ready(function(){
             <div id="header"><div style="float: left;"><a href="#"><img style="margin-top: 15px; margin-left: 10px;" alt="logo" src="image/icons/LogoGuiaTM.png" height="35" width="100" /></a></div><div style="float: right;"><a href="#"><img style="margin-top: 10px;margin-right: 10px;" alt="logo" src="image/icons/LogoTransmetro.png" height="35" width="135" /></a></div></div>
             <div></div>
             <div id="mapa"></div>
-            <input style="position: absolute; top: 80%; left: 15%" id="submit" type="submit" onclick="paso1()" value="Ver Ruta Paso a Paso"/> 
+            <input style="position: absolute; top: 75%; left: 15%" id="submit" type="submit" onclick="paso1()" value="Ver Ruta Paso a Paso"/> 
         
         
         <div id="footer" style="position: absolute">
