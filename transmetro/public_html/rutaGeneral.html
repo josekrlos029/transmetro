@@ -89,15 +89,17 @@ function buscarCercano(){
     var menor = 9999999999999;
     var idMenor;
     for(var i = 0; i<distanciaEstaciones.length;i++){
-       if(distanciaEstaciones[i]<menor){
+       alert(distanciaEstaciones[i]);
+            if(distanciaEstaciones[i]<menor){
            menor=distanciaEstaciones[i];
            idMenor= i;
        }
     }
     alert("id EStacion:"+idMenor);
    if(band==0){
+       band=1;
         buscarCercano();
-        band=1;
+        
     }else{
         agregarMarcador(idMenor);
     }
