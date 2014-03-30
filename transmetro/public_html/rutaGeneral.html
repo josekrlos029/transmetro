@@ -77,20 +77,23 @@ function paso1(){
 }
 
 function buscarCercano(){
-    
+    alert("bc")
     var menor = 9999999999999;
     var idMenor;
     for(var i = 0; i<distanciaEstaciones.length;i++){
+        alert("entro a loop")
        if(distanciaEstaciones[i]<menor){
            menor=distanciaEstaciones;
            idMenor= i;
        }
     }
+    alert("id EStacion:"+idEstacion);
    agregarMarcador(idEstacion);
+   
 }
 
 function agregarMarcador(idEstacion){
-    
+    alert("entro am")
     for(var i = 0; i<estaciones.length;i++){
         if(estaciones[i].id==idEstacion){
             map.addMarker({
