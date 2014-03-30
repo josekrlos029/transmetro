@@ -55,6 +55,7 @@ $(document).ready(function(){
     function calculateDistances(start,end) {
             alert("entro");
             var service = new google.maps.DistanceMatrixService();
+            alert("pasó");
             service.getDistanceMatrix(
               {
                 origins: [start],
@@ -64,6 +65,7 @@ $(document).ready(function(){
                 avoidHighways: false,
                 avoidTolls: false
               }, callback);
+              alert("pasó2");
           }
 
 function callback(response, status) {
