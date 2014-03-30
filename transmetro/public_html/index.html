@@ -19,7 +19,7 @@ and open the template in the editor.
         <script src="js/transmetro.js" type="text/javascript" ></script>
         <script>
             document.addEventListener("deviceready", onDeviceReady, false);
-
+            var a=[];
     // PhoneGap esta listo
     //
     function onDeviceReady() {
@@ -81,13 +81,54 @@ and open the template in the editor.
               return;
             }
             
-            localStorage.setItem('destino',place.geometry.location);
-            location.href="rutaGeneral.html"; 
+            
+            $.getJSON("http://transmetro.innovardesign.com/Administrador/obtenerParadas",function(result){
+                $.each(result, function (i, item) {
+                calculateDistances(punto,new google.maps.LatLng(item.lat,item.lon));
+            });
+            });
+            
+            alert(a[0]);
+            //localStorage.setItem('destino',place.geometry.location);
+            //location.href="rutaGeneral.html"; 
             
            
             });
                 
   }
+  
+  
+  function calculateDistances(start,end) {
+            
+            var service = new google.maps.DistanceMatrixService();
+            service.getDistanceMatrix(
+              {
+                origins: [start],
+                destinations: [end],
+                travelMode: google.maps.TravelMode.DRIVING,
+                unitSystem: google.maps.UnitSystem.METRIC,
+                avoidHighways: false,
+                avoidTolls: false
+              }, callback);
+              
+          }
+          
+              function callback(response, status) {
+  if (status != google.maps.DistanceMatrixStatus.OK) {
+    alert('Error was: ' + status);
+  } else {
+    var origins = response.originAddresses;
+    var destinations = response.destinationAddresses;
+    
+    for (var i = 0; i < origins.length; i++) {
+      var results = response.rows[i].elements;
+      
+      for (var j = 0; j < results.length; j++) {
+         a.push(results[j].distance.text);
+      }
+    }
+  }
+              }
                 
     // La función 'callback' onError recibe un objeto `PositionError`.
     //
