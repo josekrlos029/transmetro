@@ -120,7 +120,6 @@ function paso1(){
 
 function buscarCercano(){
     
-    alert("1");
     var menor = 9999999999999;
     var idMenor=0;
     
@@ -180,10 +179,10 @@ function agregarMarcador(idEstacion){
             map.addMarker({
                 lat: estaciones[idEstacion].lat,
                 lng: estaciones[idEstacion].lon,
-                title: 'Estación: '+estaciones[i].Nombre ,
+                title: 'Estación: '+estaciones[idEstacion].Nombre ,
                 icon: "image/icons/PositionExpressos.png",
                 infoWindow: {
-                content:'<p>Estación Mas Cercana a Tu destino: '+estaciones[i].nombre+'</p>'
+                content:'<p>Estación Mas Cercana a Tu destino: '+estaciones[idEstacion].nombre+'</p>'
                 }
             });
             /*
