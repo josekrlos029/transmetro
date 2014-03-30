@@ -20,54 +20,21 @@ and open the template in the editor.
         <script>
                       
 $(document).ready(function(){
-    var listaDistancias=new array();
+    //var listaDistancias=new array();
         var ventana_ancho = $(window).width();
         var ventana_alto = $(window).height();
         $("#mapa").css("width",ventana_ancho);
         $("#mapa").css("height",ventana_alto - 110);
         $(".border").css("width",ventana_ancho);
         $("#footer").css("top",ventana_alto-66);
-        alert("1");
-        //var ubicacion=localStorage.getItem('ubicacion');
-        alert("11");
+        
         $.getJSON("http://transmetro.innovardesign.com/Administrador/obtenerParadas",function(result){
                 $.each(result, function (i, item) { 
                  alert("2");   
                 //calculateDistances(ubicacion,new google.maps.LatLng(item.lat,item.lon));
         });
     });
-    /*
-    function calculateDistances(start,end) {
-                var service = new google.maps.DistanceMatrixService();
-                service.getDistanceMatrix(
-                  {
-                    origins: [start],
-                    destinations: [end],
-                    travelMode: google.maps.TravelMode.DRIVING,
-                    unitSystem: google.maps.UnitSystem.METRIC,
-                    avoidHighways: false,
-                    avoidTolls: false
-                  }, callback);
-            }
-
-        function callback(response, status) {
-          if (status != google.maps.DistanceMatrixStatus.OK) {
-            alert('Error was: ' + status);
-          } else {
-            var origins = response.originAddresses;
-            var destinations = response.destinationAddresses;
-
-
-            for (var i = 0; i < origins.length; i++) {
-              var results = response.rows[i].elements;
-
-              for (var j = 0; j < results.length; j++) {
-                  alert(destinations[j] + ", "+results[j].distance);
-                  listaDistancias.push({id:destinations[j],distancia:results[j].distance.text,duracion:results[j].duration.text});
-              }
-            }
-          }
-      }*/
+    
     });
         </script>
     </head>
