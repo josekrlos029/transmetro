@@ -38,19 +38,7 @@ $(document).ready(function(){
          });
          });
       
-    var coordenadas = ubicacion;
-                       
-            coordenadas=coordenadas.replace(")","");
-            coordenadas=coordenadas.replace("(","");
-            
-            var lista = coordenadas.split(",");
-    
-    var mapa = new GMaps({
-        div: '#mapa',
-        lat: lista[0],
-        lng: lista[1]
-     });
-    
+        
     function calculateDistances(start,end) {
             
             var service = new google.maps.DistanceMatrixService();
@@ -82,6 +70,20 @@ $(document).ready(function(){
     }
   }
   }
+  
+  var coordenadas = ubicacion;
+                       
+            coordenadas=coordenadas.replace(")","");
+            coordenadas=coordenadas.replace("(","");
+            
+            var lista = coordenadas.split(",");
+    
+    var mapa = new GMaps({
+        div: '#mapa',
+        lat: lista[0],
+        lng: lista[1]
+     });
+     
     alert(distancias); 
     });
             </script>
