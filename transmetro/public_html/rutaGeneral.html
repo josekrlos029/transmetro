@@ -86,12 +86,16 @@ $(document).ready(function(){
             coordenadas2=coordenadas2.replace(")","");
             coordenadas2=coordenadas2.replace("(","");
             var lista2=coordenadas2.split(",");
-            alert(ubicacion);
-            alert(destino);
+            
    var map = new GMaps({
   div: '#mapa',
   lat: lista[0],
-  lng: lista[1]
+  lng: lista[1],
+  zoom: 7,
+  zoomControl : false,
+    panControl : false,
+    streetViewControl : false,
+    mapTypeControl : false
 });
     map.drawRoute({
   origin: [lista[0], lista[1]],
@@ -108,7 +112,7 @@ $(document).ready(function(){
             <div id="header"><div style="float: left;"><a href="#"><img style="margin-top: 15px; margin-left: 10px;" alt="logo" src="image/icons/LogoGuiaTM.png" height="35" width="100" /></a></div><div style="float: right;"><a href="#"><img style="margin-top: 10px;margin-right: 10px;" alt="logo" src="image/icons/LogoTransmetro.png" height="35" width="135" /></a></div></div>
             <div></div>
             <div id="mapa"></div>
-            <input style="position: absolute; top: 70%; left: 30%" id="submit" type="submit" onclick="paso1()" value="Ver Ruta Paso a Paso"/> 
+            <input style="position: absolute; top: 80%; left: 15%" id="submit" type="submit" onclick="paso1()" value="Ver Ruta Paso a Paso"/> 
         
         
         <div id="footer" style="position: absolute">
