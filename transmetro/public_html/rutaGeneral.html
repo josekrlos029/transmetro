@@ -44,7 +44,7 @@ $(document).ready(function(){
             coordenadas2=coordenadas2.replace(")","");
             coordenadas2=coordenadas2.replace("(","");
             var lista2=coordenadas2.split(",");
-            prettyPrint();
+           // prettyPrint();
    map = new GMaps({
   div: '#mapa',
   lat: lista[0],
@@ -164,7 +164,7 @@ function dibujarRuta(paradas){
 
 
 function agregarMarcador(idEstacion){
-    alert("2");
+    /*
     var icon="";content ="";
     if (band==1){
         icon="image/icons/PositionExpressos.png";
@@ -176,20 +176,20 @@ function agregarMarcador(idEstacion){
         band=1;
         content ='<p>Estación Mas Cercana a Tu destino: '+estaciones[i].nombre+'</p>';
         alert("b2");
-    }
+    }*/
             map.addMarker({
                 lat: estaciones[idEstacion].lat,
                 lng: estaciones[idEstacion].lon,
                 title: 'Estación: '+estaciones[i].Nombre ,
-                icon: icon,
+                icon: "image/icons/PositionExpressos.png",
                 infoWindow: {
-                content:content
+                content:'<p>Estación Mas Cercana a Tu destino: '+estaciones[i].nombre+'</p>'
                 }
             });
-            
+            /*
             if(band==0){
                 pasoDestino();
-            }
+            }*/
         }
      
     
