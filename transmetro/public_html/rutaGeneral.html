@@ -26,8 +26,9 @@ $(document).ready(function(){
         $("#mapa").css("height",ventana_alto - 110);
         $(".border").css("width",ventana_ancho);
         $("#footer").css("top",ventana_alto-66);
-        var ubicacion=localStorage.getItem('ubicacion');
         alert("1");
+        var ubicacion=localStorage.getItem('ubicacion');
+        alert("11");
         $.getJSON("http://transmetro.innovardesign.com/Administrador/obtenerParadas",function(result){
                 $.each(result, function (i, item) { 
                  alert("2");   
