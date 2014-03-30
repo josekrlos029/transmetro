@@ -125,7 +125,7 @@ function trazarRutaAlimentadora(idMenor){
     var con=0;
     $.getJSON("http://transmetro.innovardesign.com/Administrador/obtenerParadasPoridRuta/1",function(result){
                 $.each(result, function (i, item) {
-                paradas.push([item.lat,item.lon]);
+                paradas.push(item.lat,item.lon);
                 con++;
          });
          });
