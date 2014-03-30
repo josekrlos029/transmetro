@@ -54,7 +54,8 @@ and open the template in the editor.
                     titulo:"mi ubicación",
                     map: mapa,
                     animation: google.maps.Animation.DROP,
-                    draggable:false
+                    draggable:false,
+                    icon: "image/icons/Position.png"
                 };
                 
                 var marcador = new google.maps.Marker(marker);
@@ -68,6 +69,8 @@ and open the template in the editor.
                 var autocomplete = new google.maps.places.Autocomplete(input);
                 autocomplete.bindTo('bounds', mapa);
                 var infowindow = new google.maps.InfoWindow();
+                
+                $("#inputt").css("margin-top","30px");
                 
             google.maps.event.addListener(autocomplete, 'place_changed', function() {
             infowindow.close();
@@ -95,7 +98,7 @@ and open the template in the editor.
         </script>
     </head>
     <body>
-        <div id="header"><div style="float: right;"><a style="" href="#"><img alt="logo" src="image/icons/LogoTransmetro.png" height="35" width="140" /></a></div></div>
+        <div id="header"><div style="float: right;"><a style="margin-top: 10px" href="#"><img alt="logo" src="image/icons/LogoTransmetro.png" height="35" width="140" /></a></div></div>
         <div id="mapa"></div>
         <input id="input" type="text" placeholder="¿Hacia Donde Vas?"/> 
         
