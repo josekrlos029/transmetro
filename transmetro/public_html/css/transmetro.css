@@ -15,10 +15,11 @@ body{
 }
 
 #footer{
-   height: 65px;
+   height: 60px;
    width: 100%;
-   background-color: #ebeaea;
-   padding-top: 5px
+   background-color: black;
+   padding-top: 5px;
+   border-top: 5px solid #DB001B
 }
 
 #header{
