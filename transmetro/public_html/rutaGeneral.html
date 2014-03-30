@@ -71,15 +71,13 @@ $(document).ready(function(){
   } else {
     var origins = response.originAddresses;
     var destinations = response.destinationAddresses;
-    alert('1');
+    
     for (var i = 0; i < origins.length; i++) {
       var results = response.rows[i].elements;
-      alert('i');
+      
       for (var j = 0; j < results.length; j++) {
-        alert('j');
-        alert(origins[i] + ' to ' + destinations[j]
-            + ': ' + results[j].distance.text + ' in '
-            + results[j].duration.text);
+       alert(origins[i]);
+        //alert(origins[i] + ' to ' + destinations[j] + ': ' + results[j].distance.text + ' in ' + results[j].duration.text);
       }
     }
   }
