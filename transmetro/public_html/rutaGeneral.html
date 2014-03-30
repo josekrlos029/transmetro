@@ -83,11 +83,11 @@ function buscarCercano(){
     
     alert("bc");
     var menor = 9999999999999;
-    var idMenor;
+    var idMenor=0;
     
     for(var i = 0; i<distanciaEstaciones.length;i++){
-       alert(distanciaEstaciones[i]);
-            if(distanciaEstaciones[i]<menor){
+        var km=parseInt(distanciaEstaciones[i].replace(" km",""));
+            if(km<menor){
            menor=distanciaEstaciones[i];
            idMenor= i;
        }
