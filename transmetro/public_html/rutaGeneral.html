@@ -31,6 +31,7 @@ $(document).ready(function(){
         var destino=localStorage.getItem('destino');
         $.getJSON("http://transmetro.innovardesign.com/Administrador/obtenerParadas",function(result){
                 $.each(result, function (i, item) { 
+                 alert(i);
                 calculateDistances(ubicacion,new google.maps.LatLng(item.lat,item.lon));
         });
     });
