@@ -81,24 +81,24 @@ function paso1(){
 
 function buscarCercano(){
     
-    alert("bc");
+    
     var menor = 9999999999999;
     var idMenor=0;
     
-    for(var i = 0; i<=distanciaEstaciones.length;i++){
+    for(var i = 0; i<distanciaEstaciones.length;i++){
         var km=parseInt(distanciaEstaciones[i].replace(" km",""));
             if(km<menor){
            menor=km;
            idMenor= i;
        }
     }
-    alert("id EStacion:"+idMenor);
+    
    timer2 = setTimeout(function(){agregarMarcador(idMenor);},2000);
    
 }
 
 function agregarMarcador(idEstacion){
-    
+    alert("entro");
     for(var i = 0; i<estaciones.length;i++){
         if(estaciones[i].id==idEstacion){
             map.addMarker({
