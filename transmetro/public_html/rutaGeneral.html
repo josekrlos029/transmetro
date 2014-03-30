@@ -45,15 +45,19 @@ $(document).ready(function(){
      });
      
      
-     $.getJSON("http://transmetro.innovardesign.com/Administrador/obtenerParadas",function(result){
+     /*$.getJSON("http://transmetro.innovardesign.com/Administrador/obtenerParadas",function(result){
                 $.each(result, function (i, item) {
                     
                  calculateDistances(new google.maps.LatLng(lista[0],lista[1]),new google.maps.LatLng(item.lat,item.lon));
          });
          });
-        
-    });
-    function calculateDistances(start,end) {
+        */
+       
+       for (var i = 10 ; i <=10 ; i++){
+           calculateDistances(ubicacion, destino);
+       }
+       
+        function calculateDistances(start,end) {
             
             var service = new google.maps.DistanceMatrixService();
             
@@ -67,6 +71,8 @@ $(document).ready(function(){
                 avoidTolls: false
               }, callback);
               
+          }
+          
               function callback(response, status) {
   if (status != google.maps.DistanceMatrixStatus.OK) {
     alert('Error was: ' + status);
@@ -85,8 +91,10 @@ $(document).ready(function(){
     }
   }
   }
-  
-          }
+       
+       
+    });
+   
 function imprimirPrimerVec(){
     alert(a[0]);
 }
