@@ -85,7 +85,7 @@ function buscarCercano(){
     var menor = 9999999999999;
     var idMenor=0;
     
-    for(var i = 0; i<distanciaEstaciones.length;i++){
+    for(var i = 0; i<=distanciaEstaciones.length;i++){
         var km=parseInt(distanciaEstaciones[i].replace(" km",""));
             if(km<menor){
            menor=km;
