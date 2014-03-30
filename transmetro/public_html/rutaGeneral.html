@@ -63,40 +63,18 @@ function callback(response, status) {
     }
   }
 }      
+var array = [];
         $.getJSON("http://transmetro.innovardesign.com/Administrador/obtenerParadas",function(result){
-                $.each(result, function (i, item) { 
+                /*$.each(result, function (i, item) { 
                  var dest = new google.maps.LatLng(item.lan, item.lon);   
-                var service = new google.maps.DistanceMatrixService();
-  service.getDistanceMatrix(
-    {
-      origins: [ubicacion],
-      destinations: [dest],
-      travelMode: google.maps.TravelMode.DRIVING,
-      unitSystem: google.maps.UnitSystem.METRIC,
-      avoidHighways: false,
-      avoidTolls: false
-    }, function(response, status){
-          if (status != google.maps.DistanceMatrixStatus.OK) {
-    alert('Error was: ' + status);
-  } else {
-    var origins = response.originAddresses;
-    var destinations = response.destinationAddresses;
-    
-
-    for (var i = 0; i < origins.length; i++) {
-      var results = response.rows[i].elements;
-      
-      for (var j = 0; j < results.length; j++) {
-        
-        alert(origins[i] + ' to ' + destinations[j]
-            + ': ' + results[j].distance.text + ' in '
-            + results[j].duration.text);
-      }
-    }
-  }
-    });
+                
+    });*/
+        array = result;
         });
-    });
+        
+        for(var i = 0 ; i<array.length;i++){
+            alert(array[i].id);
+        }     
     
     var coordenadas = ubicacion;
                        
