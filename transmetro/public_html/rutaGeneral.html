@@ -17,7 +17,9 @@ and open the template in the editor.
         <script src="js/gmaps.js" type="text/javascript" ></script>
         <script src="js/envios.js" type="text/javascript" ></script>
         <script src="js/transmetro.js" type="text/javascript" ></script>
-        <script>        
+        <script>   
+            
+            var arr=[];
 $(document).ready(function(){
     //var listaDistancias=new array();
         var ventana_ancho = $(window).width();
@@ -80,7 +82,11 @@ $(document).ready(function(){
     }
   }
   }
-      alert(distancias);
+      
+    });
+    
+    $(document).load(function(){
+        alert("debe suceder despues");
     });
         </script>
     </head>
