@@ -65,6 +65,7 @@ $(document).ready(function(){
 var estaciones = new Array();
 var distanciaEstaciones = new Array();
 var cont=0;
+var band = 1;
 function paso1(){
     var ubicacion=localStorage.getItem('ubicacion');
     $.getJSON("http://transmetro.innovardesign.com/Administrador/obtenerParadas",function(result){
@@ -72,12 +73,17 @@ function paso1(){
                 $.each(result, function (i, item) {
                 calculateDistances(ubicacion,new google.maps.LatLng(item.lat,item.lon));
          });
-         });          
-         buscarCercano();
+         });
+         if(band==1){
+            band=0;
+            paso1();
+         }else{
+            buscarCercano();
+         }
 }
 
 function buscarCercano(){
-    alert("bc")
+    alert("bc");
     var menor = 9999999999999;
     var idMenor;
     for(var i = 0; i<distanciaEstaciones.length;i++){
@@ -136,7 +142,7 @@ function agregarMarcador(idEstacion){
                         var results = response.rows[i].elements;
 
                         for (var j = 0; j < results.length; j++) {
-                           alert(results[j].distance.text); 
+                           
                            distanciaEstaciones[cont]=results[j].distance.text;
                            cont++;
                         }
