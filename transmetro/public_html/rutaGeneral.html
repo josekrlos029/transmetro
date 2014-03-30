@@ -57,7 +57,7 @@ $(document).ready(function(){
   origin: [lista[0], lista[1]],
   destination: [lista2[0], lista2[1]],
   travelMode: 'driving',
-  strokeColor: '#db001b',
+  strokeColor: 'black',
   strokeOpacity: 0.6,
   strokeWeight: 6
 });
@@ -69,6 +69,16 @@ map.addMarker({
   title: 'Mi ubicación',
   click: function(e) {
     alert('Mi ubicación');
+  }
+});
+
+map.addMarker({
+  lat: lista2[0],
+  lng: lista2[1],
+  icon: "image/icons/PositionAlimentadores.png",
+  title: 'Mi Destino',
+  click: function(e) {
+    alert('Mi Destino');
   }
 });
 
@@ -125,6 +135,7 @@ function trazarRutaAlimentadora(idMenor){
 }
 
 function dibujarRuta(idMenor,paradas){
+    alert("entró");
     map.travelRoute({
   origin: [estaciones[idMenor].lat, estaciones[idMenor].lon],
   destination: [estaciones[idMenor].lat, estaciones[idMenor].lon],
@@ -133,7 +144,7 @@ function dibujarRuta(idMenor,paradas){
     
       map.drawPolyline({
         path: paradas,
-        strokeColor: 'black',
+        strokeColor: '#405da3',
         strokeOpacity: 0.6,
         strokeWeight: 6
       });  
@@ -197,7 +208,7 @@ function agregarMarcador(idEstacion){
     </head>
     <body>
             <div id="header"><div style="float: left;"><a href="#"><img style="margin-top: 15px; margin-left: 10px;" alt="logo" src="image/icons/LogoGuiaTM.png" height="35" width="100" /></a></div><div style="float: right;"><a href="#"><img style="margin-top: 10px;margin-right: 10px;" alt="logo" src="image/icons/LogoTransmetro.png" height="35" width="135" /></a></div></div>
-            <div id="pasos" hidden style="position: absolute; float: right; margin: 0; padding: 0;"></div>
+            <div id="pasos" hidden style="position: absolute; float: right; margin: 0; padding: 0;">.</div>
             <div id="mapa"></div>
             <input style="position: absolute; top: 75%; left: 15%" id="submit" type="submit" onclick="paso1()" value="Ver Ruta Paso a Paso"/> 
         
