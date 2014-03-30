@@ -110,7 +110,7 @@ function buscarCercano(){
 }
 
 function trazarRutaAlimentadora(idMenor){
-    alert("entró");
+    
     $("#pasos").removeAttr("hidden");
     var paradas = new Array();
     var con=0;
@@ -120,7 +120,11 @@ function trazarRutaAlimentadora(idMenor){
                 con++;
          });
          });
+    timer = setTimeout(function(){dibujarRuta(idMenor,paradas);},2000);
     
+}
+
+function dibujarRuta(idMenor,paradas){
     map.travelRoute({
   origin: [estaciones[idMenor].lat, estaciones[idMenor].lon],
   destination: [estaciones[idMenor].lat, estaciones[idMenor].lon],
@@ -129,7 +133,7 @@ function trazarRutaAlimentadora(idMenor){
     
       map.drawPolyline({
         path: paradas,
-        strokeColor: '#405da3',
+        strokeColor: 'black',
         strokeOpacity: 0.6,
         strokeWeight: 6
       });  
