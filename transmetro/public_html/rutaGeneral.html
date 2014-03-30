@@ -87,7 +87,6 @@ function buscarCercano(){
     var menor = 9999999999999;
     var idMenor;
     for(var i = 0; i<distanciaEstaciones.length;i++){
-        alert("entro a loop")
        if(distanciaEstaciones[i]<menor){
            menor=distanciaEstaciones;
            idMenor= i;
@@ -99,7 +98,7 @@ function buscarCercano(){
 }
 
 function agregarMarcador(idEstacion){
-    alert("entro am")
+    alert("entro am");
     for(var i = 0; i<estaciones.length;i++){
         if(estaciones[i].id==idEstacion){
             map.addMarker({
