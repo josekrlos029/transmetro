@@ -53,9 +53,9 @@ $(document).ready(function(){
  
     });
     function calculateDistances(start,end) {
-            alert("entro");
+            
             var service = new google.maps.DistanceMatrixService();
-            alert("pasó");
+            
             service.getDistanceMatrix(
               {
                 origins: [start],
@@ -65,7 +65,7 @@ $(document).ready(function(){
                 avoidHighways: false,
                 avoidTolls: false
               }, callback);
-              alert("pasó2");
+            
           }
 
 function callback(response, status) {
@@ -74,12 +74,12 @@ function callback(response, status) {
   } else {
     var origins = response.originAddresses;
     var destinations = response.destinationAddresses;
-
+    alert('1');
     for (var i = 0; i < origins.length; i++) {
       var results = response.rows[i].elements;
-      
+      alert('i');
       for (var j = 0; j < results.length; j++) {
-        
+        alert('j');
         alert(origins[i] + ' to ' + destinations[j]
             + ': ' + results[j].distance.text + ' in '
             + results[j].duration.text);
