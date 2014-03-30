@@ -97,7 +97,7 @@ function pasoDestino(){
     $.getJSON("http://transmetro.innovardesign.com/Administrador/obtenerParadas",function(result){
                 estaciones = result;
                 $.each(result, function (i, item) {
-                calculateDistances(ubicacion,new google.maps.LatLng(item.lat,item.lon));
+                calculateDistances(destino,new google.maps.LatLng(item.lat,item.lon));
          });
          });
          timer3 = setTimeout(function(){buscarCercano();},2000);
@@ -139,6 +139,7 @@ function buscarCercano(){
 
 function trazarRutaAlimentadora(idMenor){
     $("#pasos").removeAttr("hidden");
+    $("#submit").hide();
     var paradas = new Array();
     var con=0;
     $.getJSON("http://transmetro.innovardesign.com/Administrador/obtenerParadasPoridRuta/1",function(result){
@@ -168,10 +169,12 @@ function agregarMarcador(idEstacion){
         icon="image/icons/PositionExpressos.png";
         content= '<p>Estación Mas Cercana: '+estaciones[i].nombre+'</p>';
         band=0;
+        alert("b1");
     }else{
         icon="image/icons/Position.png";
         band=1;
         content ='<p>Estación Mas Cercana a Tu destino: '+estaciones[i].nombre+'</p>';
+        alert("b2");
     }
             map.addMarker({
                 lat: estaciones[idEstacion].lat,
