@@ -66,43 +66,24 @@ $(document).ready(function(){
                         contentType: "application/json; charset=utf-8",
                         dataType: "jsonp",
                         async: false,
+                        jsonpCallback:"Callback" ,
                         success: function (result) {
                             alert(result);
                             var lClientes = (typeof result.d) == 'string' ? eval('(' + result.d + ')') : result.d;
                             $.each(lClientes, function (i, item) {
-                                calculateDistances(ubicacion,new google.maps.LatLng(item.lat,item.lon));
+                                //calculateDistances(ubicacion,new google.maps.LatLng(item.lat,item.lon));
                             });
 
                         },
                         error: function (jqXHR, status, error) {
                             alert(error + "-" + jqXHR.responseText);
                         }
+                        
                     });
+        function Callback(){
+            alert("terminó");
+        }            
     });
-            /*
-            $(document).ready(function(){
-                        var ubicacion=localStorage.getItem('ubicacion');
-                        alert(ubicacion);
-                        $.ajax({
-
-                        type: "POST",
-                        url: "http://transmetro.innovardesign.com/Administrador/obtenerParadas",
-                        data: {},
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "jsonp",
-                        async: false,
-                        success: function (result) {
-                            var lClientes = (typeof result.d) == 'string' ? eval('(' + result.d + ')') : result.d;
-                            $.each(lClientes, function (i, item) {
-                                calculateDistances(ubicacion,new google.maps.LatLng(item.lat,item.lon));
-                            });
-
-                        },
-                        error: function (jqXHR, status, error) {
-                            alert(error + "-" + jqXHR.responseText);
-                        }
-                    });
-            });*/
         </script>
     </head>
     <body>
