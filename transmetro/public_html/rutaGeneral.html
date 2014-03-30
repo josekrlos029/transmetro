@@ -59,11 +59,7 @@ $(document).ready(function(){
                 unitSystem: google.maps.UnitSystem.METRIC,
                 avoidHighways: false,
                 avoidTolls: false
-              }, callback);
-          }
-
-function callback(response, status) {
-  if (status != google.maps.DistanceMatrixStatus.OK) {
+              }, function(){if (status != google.maps.DistanceMatrixStatus.OK) {
     alert('Error was: ' + status);
   } else {
     var origins = response.originAddresses;
@@ -80,8 +76,10 @@ function callback(response, status) {
       }
     }
   }
-} 
-         });
+ });
+          }
+
+
         
     });
         </script>
