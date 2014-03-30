@@ -136,22 +136,16 @@ function trazarRutaAlimentadora(idMenor){
 
 function dibujarRuta(idMenor,paradas){
     alert("entró");
-    map.travelRoute({
-  origin: [estaciones[idMenor].lat, estaciones[idMenor].lon],
-  destination: [estaciones[idMenor].lat, estaciones[idMenor].lon],
-  travelMode: 'driving',
-  step: function(e) {
     
       map.drawPolyline({
-        path: e.path,
+        path: path,
         strokeColor: '#405da3',
         strokeOpacity: 0.6,
         strokeWeight: 6
       });  
     
   }
-}); 
-}
+
 
 function agregarMarcador(idEstacion){
     
