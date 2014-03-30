@@ -25,6 +25,7 @@ body{
 #header{
     height: 60px;
     width: 100%;
+    border-top: solid #db001b 5px;
     border-bottom: solid #405da3 5px;
     background-color: #ebeaea;
     margin:0;
