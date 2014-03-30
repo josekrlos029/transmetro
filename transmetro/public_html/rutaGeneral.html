@@ -70,7 +70,10 @@ function callback(response, status) {
                  array.push(item);
          });
          });
-    
+    $.each(array, function (i, item) {
+        var dest = new google.maps.LatLng(item.lat,item.lon);
+        calculateDistances(ubicacion,dest);
+    });
     var coordenadas = ubicacion;
                        
             coordenadas=coordenadas.replace(")","");
