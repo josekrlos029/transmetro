@@ -34,8 +34,8 @@
     <gap:splash src="image/SplasiOS/Default-Portrait.png" gap:platform="ios" width="768" height="1004" />
 
     <!-- retina iPad support: PhoneGap 2.5.0+ only -->
-    <gap:splash src="splash/ios/Default-Landscape_at_2x.png" gap:platform="ios" width="2048" height="1496" />
-    <gap:splash src="splash/ios/Default-Portrait_at_2x.png" gap:platform="ios" width="1536" height="2008" />
+    <gap:splash src="image/SplasiOS/Default-Landscape_at_2x.png" gap:platform="ios" width="2048" height="1496" />
+    <gap:splash src="image/SplasiOS/Default-Portrait_at_2x.png" gap:platform="ios" width="1536" height="2008" />
     
 	<gap:platforms>
 		<gap:platform name="android" minVersion="2.1" />
