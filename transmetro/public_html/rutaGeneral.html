@@ -15,7 +15,6 @@ and open the template in the editor.
         <script src="js/jquery-1.10.2.min.js" type="text/javascript" ></script>
         <script src="js/mootools-core-1.4.5.js" type="text/javascript" ></script>
         <script src="js/envios.js" type="text/javascript" ></script>
-        <script src="phonegap.js" type="text/javascript"></script>
         <script src="js/transmetro.js" type="text/javascript" ></script>
         <script>
             var listaDistancias=new array();
@@ -45,7 +44,7 @@ and open the template in the editor.
               var results = response.rows[i].elements;
 
               for (var j = 0; j < results.length; j++) {
-                  alert(destinations[j] + ", "+results[j].distance)
+                  alert(destinations[j] + ", "+results[j].distance);
                   listaDistancias.push({id:destinations[j],distancia:results[j].distance.text,duracion:results[j].duration.text});
               }
             }
