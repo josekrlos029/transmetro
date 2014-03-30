@@ -66,6 +66,7 @@ var estaciones = new Array();
 var distanciaEstaciones = new Array();
 var cont=0;
 function paso1(){
+    alert("al menos entra :|");
     $.getJSON("http://transmetro.innovardesign.com/Administrador/obtenerParadas",function(result){
                 $.each(result, function (i, item) {
                 calculateDistances(ubicacion,new google.maps.LatLng(item.lat,item.lon));
