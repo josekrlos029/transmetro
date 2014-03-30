@@ -80,8 +80,14 @@ $(document).ready(function(){
             coordenadas=coordenadas.replace("(","");
             
             var lista = coordenadas.split(",");
-    
-    var punto = ubicacion;
+            
+            var coordenadas2 = destino;
+                       
+            coordenadas2=coordenadas2.replace(")","");
+            coordenadas2=coordenadas2.replace("(","");
+            var lista2=coordenadas.split(",");
+            var dest=new google.maps.LatLng(lista2[0],lista2[1]);
+    var punto = new google.maps.LatLng(lista[0],lista[1]);
     var config = {
             zoom:16,
             center:punto,
@@ -95,8 +101,8 @@ $(document).ready(function(){
             
             var directionsService = new google.maps.DirectionsService();
             var request = {
-                origin:ubicacion,
-                destination:destino,
+                origin:punto,
+                destination:dest,
                 travelMode: google.maps.TravelMode.DRIVING,
                 disableDefaultUI: true 
             };
@@ -112,7 +118,8 @@ $(document).ready(function(){
     </head>
     <body>
             <div id="header"><div style="float: left;"><a href="#"><img style="margin-top: 15px; margin-left: 10px;" alt="logo" src="image/icons/LogoGuiaTM.png" height="35" width="100" /></a></div><div style="float: right;"><a href="#"><img style="margin-top: 10px;margin-right: 10px;" alt="logo" src="image/icons/LogoTransmetro.png" height="35" width="135" /></a></div></div>
-        <div id="mapa"></div>
+            <div></div>
+            <div id="mapa"></div>
         <input id="submit" type="submit" value="Ver Ruta Paso a Paso"/> 
         
         
