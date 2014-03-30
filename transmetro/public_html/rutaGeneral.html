@@ -46,7 +46,7 @@ $(document).ready(function(){
   div: '#mapa',
   lat: lista[0],
   lng: lista[1],
-  zoom: 10,
+  zoom: 14,
   zoomControl : false,
     panControl : false,
     streetViewControl : false,
@@ -66,7 +66,7 @@ var estaciones = new Array();
 var distanciaEstaciones = new Array();
 var cont=0;
 function paso1(){
-    
+    var ubicacion=localStorage.getItem('ubicacion');
     $.getJSON("http://transmetro.innovardesign.com/Administrador/obtenerParadas",function(result){
                 $.each(result, function (i, item) {
                     alert(item.id);
