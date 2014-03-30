@@ -21,8 +21,7 @@ and open the template in the editor.
             
             
 $(document).ready(function(){
-    var listaDistancias=new array();
-        var ventana_ancho = $(window).width();
+    var ventana_ancho = $(window).width();
         var ventana_alto = $(window).height();
         $("#mapa").css("width",ventana_ancho);
         $("#mapa").css("height",ventana_alto - 110);
@@ -30,50 +29,6 @@ $(document).ready(function(){
         $("#footer").css("top",ventana_alto-66);
         var ubicacion=localStorage.getItem('ubicacion');
         var destino=localStorage.getItem('destino');
-         var distancias=new Array();
-         var a=new Array();
-         var cont=0;
-    
-         $.getJSON("http://transmetro.innovardesign.com/Administrador/obtenerParadas",function(result){
-                $.each(result, function (i, item) {
-                calculateDistances(ubicacion,new google.maps.LatLng(item.lat,item.lon));
-         });
-         });        
-      
-        
-    function calculateDistances(start,end) {
-            
-            var service = new google.maps.DistanceMatrixService();
-            service.getDistanceMatrix(
-              {
-                origins: [start],
-                destinations: [end],
-                travelMode: google.maps.TravelMode.DRIVING,
-                unitSystem: google.maps.UnitSystem.METRIC,
-                avoidHighways: false,
-                avoidTolls: false
-              }, callback);
-              
-          }
-          
-              function callback(response, status) {
-                    if (status != google.maps.DistanceMatrixStatus.OK) {
-                      alert('Error was: ' + status);
-                    } else {
-                      var origins = response.originAddresses;
-                      var destinations = response.destinationAddresses;
-
-                      for (var i = 0; i < origins.length; i++) {
-                        var results = response.rows[i].elements;
-
-                        for (var j = 0; j < results.length; j++) {
-                           distancias[cont]=results[j].distance.text;
-                           cont++;
-                        }
-                      }
-                    }
-                    }
-  
   var coordenadas = ubicacion;
                        
             coordenadas=coordenadas.replace(")","");
@@ -105,8 +60,55 @@ $(document).ready(function(){
   strokeOpacity: 0.6,
   strokeWeight: 6
 });
-    });
-            </script>
+});
+
+var estaciones = new Array();
+var distanciaEstaciones = new Array();
+var cont=0;
+function paso1(){
+    $.getJSON("http://transmetro.innovardesign.com/Administrador/obtenerParadas",function(result){
+                $.each(result, function (i, item) {
+                calculateDistances(ubicacion,new google.maps.LatLng(item.lat,item.lon));
+         });
+         });  
+}
+    
+ function calculateDistances(start,end) {
+            
+            var service = new google.maps.DistanceMatrixService();
+            service.getDistanceMatrix(
+              {
+                origins: [start],
+                destinations: [end],
+                travelMode: google.maps.TravelMode.DRIVING,
+                unitSystem: google.maps.UnitSystem.METRIC,
+                avoidHighways: false,
+                avoidTolls: false
+              }, callback);
+              
+          }
+          
+              function callback(response, status) {
+                    if (status != google.maps.DistanceMatrixStatus.OK) {
+                      alert('Error was: ' + status);
+                    } else {
+                      var origins = response.originAddresses;
+                      var destinations = response.destinationAddresses;
+
+                      for (var i = 0; i < origins.length; i++) {
+                        var results = response.rows[i].elements;
+
+                        for (var j = 0; j < results.length; j++) {
+                           alert(results[j].distance.text); 
+                           distanciaEstaciones[cont]=results[j].distance.text;
+                           cont++;
+                        }
+                      }
+                    }
+                    }
+  
+
+    </script>
     </head>
     <body>
             <div id="header"><div style="float: left;"><a href="#"><img style="margin-top: 15px; margin-left: 10px;" alt="logo" src="image/icons/LogoGuiaTM.png" height="35" width="100" /></a></div><div style="float: right;"><a href="#"><img style="margin-top: 10px;margin-right: 10px;" alt="logo" src="image/icons/LogoTransmetro.png" height="35" width="135" /></a></div></div>
