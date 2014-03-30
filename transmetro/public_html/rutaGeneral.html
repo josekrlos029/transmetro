@@ -75,22 +75,16 @@ function paso1(){
                 calculateDistances(ubicacion,new google.maps.LatLng(item.lat,item.lon));
          });
          });
-         
-         if(band==1){
-            band=0;
-            paso1();
-         }else{
-            buscarCercano();
+         timer = setTimeout(function(){buscarCercano();},2000);
+           
          }
-}
 
 function buscarCercano(){
     
     alert("bc");
     var menor = 9999999999999;
     var idMenor;
-    alert(distanciaEstaciones[1]);
-    alert(estaciones[1].id);
+    
     for(var i = 0; i<distanciaEstaciones.length;i++){
        alert(distanciaEstaciones[i]);
             if(distanciaEstaciones[i]<menor){
@@ -99,19 +93,12 @@ function buscarCercano(){
        }
     }
     alert("id EStacion:"+idMenor);
-   if(band==0){
-       band=1;
-        buscarCercano();
-        
-    }else{
-        agregarMarcador(idMenor);
-    }
-        
+   timer2 = setTimeout(function(){agregarMarcador(idMenor);},2000);
    
 }
 
 function agregarMarcador(idEstacion){
-    alert("entro am");
+    
     for(var i = 0; i<estaciones.length;i++){
         if(estaciones[i].id==idEstacion){
             map.addMarker({
