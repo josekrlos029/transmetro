@@ -49,7 +49,11 @@ $(document).ready(function(){
                  calculateDistances(ubicacion,new google.maps.LatLng(item.lat,item.lon));
          });
          });
-        function calculateDistances(start,end) {
+        
+} 
+    });
+    function calculateDistances(start,end) {
+            alert("entro");
             var service = new google.maps.DistanceMatrixService();
             service.getDistanceMatrix(
               {
@@ -80,8 +84,6 @@ function callback(response, status) {
       }
     }
   }
-} 
-    });
         </script>
     </head>
     <body>
