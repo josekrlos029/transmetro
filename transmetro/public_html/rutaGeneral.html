@@ -61,6 +61,17 @@ $(document).ready(function(){
   strokeOpacity: 0.6,
   strokeWeight: 6
 });
+
+map.addMarker({
+  lat: lista[0],
+  lng: lista[1],
+  icon: "image/icons/Position.png",
+  title: 'Mi ubicación',
+  click: function(e) {
+    alert('Mi ubicación');
+  }
+});
+
 });
 
 var estaciones = new Array();
