@@ -101,21 +101,25 @@ and open the template in the editor.
     <body>
         <div id="header"><div style="float: left;"><a href="#"><img style="margin-top: 15px; margin-left: 10px;" alt="logo" src="image/icons/LogoGuiaTM.png" height="35" width="100" /></a></div><div style="float: right;"><a href="#"><img style="margin-top: 10px;margin-right: 10px;" alt="logo" src="image/icons/LogoTransmetro.png" height="35" width="135" /></a></div></div>
         <div >
-            <table style="margin-top: 5%; margin-left: 5%; margin-right: 5%; width: 90%;  ">
+            <table style="margin-top: 5%; margin-left: 5%; margin-right: 5%; width: 90%; margin-bottom: 5%;  ">
                 <tr>
                     <td style="width: 50%; ">
-                        <input type="submit" id="input_horarios"  value="Horarios y Operaciones"/> 
+                        <a href="horario.html"><input type="submit" id="input_horarios"  value="Horarios y Operaciones" /> </a> 
                     </td>
+                    
+                <tr>
                     <td style="width: 50%">
-                        <input type="submit"  id="input_Ruta"  value="Rutas y Mapas"/> 
+                        <input type="submit"  id="input_Ruta"  value="Rutas y Mapas" /> 
                     </td>
                 </tr>
                 <tr>
                     <td style="width: 50%">
-                        <input type="submit"  id="input_ModoDePago"  value="Modo de Pago"/> 
+                        <a href="modoDePago"><input type="submit"  id="input_ModoDePago"  value="Modo de Pago" name="modoDePago.html"/></a> 
                     </td >
+                </tr>    
+                <tr>    
                     <td style="width: 50%">
-                        <input type="submit"  id="input_Tarjeta"  value="Mi Tarjeta"/> 
+                        <a href="modoDePago"><input type="submit"  id="input_Tarjeta"  value="Mi Tarjeta" name="modoDePago.html"/></a> 
                     </td>
                 </tr>                
             </table>
@@ -125,15 +129,15 @@ and open the template in the editor.
             <table style="width: 100%; height: 60px">
                 <tr>
                     <td style=" width: 25%; border-right: 1px solid black;"   >                       
-                        <div><a style="margin-left: 30%" href="#"><img src="image/icons/Icono-BuscarBlanco.png" height="auto" width=35%" /></a></div>
+                        <div><a style="margin-left: 30%" href="index.html"><img src="image/icons/Icono-BuscarBlanco.png" height="auto" width=35%" /></a></div>
                         <div style="text-align: center; font-size: 11px; font-family: Arial; color: white"> Buscar</div>
                     </td>   
                     <td style=" width: 25%; border-right: 1px solid black;" >
-                        <div><a style="margin-left: 30%" href="#"><img src="image/icons/Icono-NotificacionesBlanco.png" height="auto" width=35%" /></a></div>
+                        <div><a style="margin-left: 30%" href="notificaciones.html"><img src="image/icons/Icono-NotificacionesBlanco.png" height="auto" width=35%" /></a></div>
                         <div style="text-align: center; font-size: 11px; font-family: Arial; color: white"> Notificaciones</div>
                     </td>
                     <td style=" width: 25%; border-right: 1px solid black;" >
-                        <div><a style="margin-left: 30%" href="#"><img src="image/icons/Icono-InformacionBlanco.png" height="auto" width=35%" /></a></div>
+                        <div><a style="margin-left: 30%" href="informacion.html"><img src="image/icons/Icono-InformacionBlanco.png" height="auto" width=35%" /></a></div>
                         <div style="text-align: center; font-size: 11px; font-family: Arial; color: white"> Informacion</div>
                     </td>
                     <td style=" width: 25%; " >

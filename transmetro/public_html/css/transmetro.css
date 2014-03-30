@@ -74,6 +74,7 @@ body{
     font-size: 15px;
     color:white;
     padding-right: 15px;
+    text-align: center;
     
 }
 
@@ -89,6 +90,7 @@ body{
     font-size: 15px;
     color:white;
     padding-right: 15px;
+    text-align: center;
     
 }
 
@@ -104,7 +106,7 @@ body{
     font-size: 15px;
     color:white;
     padding-right: 15px;
-    
+    text-align: center;
 }
 
 #input_Tarjeta{
@@ -118,7 +120,7 @@ body{
     text-align: right;
     font-size: 15px;
     color:white;
-    
+    text-align: center;
     padding-right: 15px;
     
 }
@@ -145,6 +147,7 @@ body{
     width: 200px;
     margin:0;
    padding: 0;
+   margin-left: 5%;
 }
 
 .titulo_notificacion {
@@ -153,13 +156,16 @@ body{
 	font-size: 12px;
 	font-weight: bold;
 	color: #db001b;
+        
 }
 .texto_notificacion p {
 	color: #333;
+        text-align: justify;
 }
 .texto_notificacion {
 	color: #333;
 	font-weight: normal;
+        text-align: justify;
 }
 
 .texto_notificaciones {
@@ -169,11 +175,5 @@ body{
 }
 .texto_notificacion1 {	color: #333;
 	font-weight: normal;
-}
-
-#pasos{
-    background: black; 
-    opacity:0.8;
-    filter:alpha(opacity=80);
-    
+        text-align: justify;
 }
