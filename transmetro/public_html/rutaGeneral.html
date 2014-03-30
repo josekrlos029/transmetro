@@ -27,17 +27,60 @@ $(document).ready(function(){
         $("#mapa").css("height",ventana_alto - 110);
         $(".border").css("width",ventana_ancho);
         $("#footer").css("top",ventana_alto-66);
-        alert(localStorage.getItem('ubicacion'));
+        var ubicacion=localStorage.getItem('ubicacion');
         $.getJSON("http://transmetro.innovardesign.com/Administrador/obtenerParadas",function(result){
                 $.each(result, function (i, item) { 
                 
         });
     });
-    new GMaps({
+    
+    var coordenadas = ubicacion;
+                       
+            coordenadas=coordenadas.replace(")","");
+            coordenadas=coordenadas.replace("(","");
+            
+            var lista = coordenadas.split(",");
+    
+    var mapa = new GMaps({
         div: '#mapa',
-        lat: -12.043333,
-        lng: -77.028333
+        lat: lista[0],
+        lng: lista[1]
      });
+     
+             function calculateDistances(start,end) {
+  var service = new google.maps.DistanceMatrixService();
+  service.getDistanceMatrix(
+    {
+      origins: [start],
+      destinations: [end],
+      travelMode: google.maps.TravelMode.DRIVING,
+      unitSystem: google.maps.UnitSystem.METRIC,
+      avoidHighways: false,
+      avoidTolls: false
+    }, callback);
+}
+
+function callback(response, status) {
+  if (status != google.maps.DistanceMatrixStatus.OK) {
+    alert('Error was: ' + status);
+  } else {
+    var origins = response.originAddresses;
+    var destinations = response.destinationAddresses;
+    
+
+    for (var i = 0; i < origins.length; i++) {
+      var results = response.rows[i].elements;
+      
+      for (var j = 0; j < results.length; j++) {
+        
+        alert(origins[i] + ' to ' + destinations[j]
+            + ': ' + results[j].distance.text + ' in '
+            + results[j].duration.text);
+      }
+    }
+  }
+}
+     
     });
         </script>
     </head>
