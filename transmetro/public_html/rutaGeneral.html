@@ -25,6 +25,7 @@ $(document).ready(function(){
         var ventana_alto = $(window).height();
         $("#mapa").css("width",ventana_ancho);
         $("#mapa").css("height",ventana_alto - 110);
+        $("#pasos").css("height",ventana_alto - 110);
         $(".border").css("width",ventana_ancho);
         $("#footer").css("top",ventana_alto-66);
         var ubicacion=localStorage.getItem('ubicacion');
@@ -93,25 +94,51 @@ function buscarCercano(){
        }
     }
     
-   timer2 = setTimeout(function(){agregarMarcador(idMenor);},2000);
+   timer2 = setTimeout(function(){trazarRutaAlimentadora(idMenor);},2000);
    
 }
 
+function trazarRutaAlimentadora(idMenor){
+    $("#pasos").removeAttr("hidden");
+    var paradas = new Array();
+    var con=0;
+    $.getJSON("http://transmetro.innovardesign.com/Administrador/obtenerParadasPoridRuta/"+estaciones[idMenor].id,function(result){
+                $.each(result, function (i, item) {
+                paradas[con]= [item.lat,item.lon];
+                con++;
+         });
+         });
+    
+    map.travelRoute({
+  origin: [estaciones[idMenor].lat, estaciones[idMenor].lon],
+  destination: [estaciones[idMenor].lat, estaciones[idMenor].lon],
+  travelMode: 'driving',
+  step: function(e) {
+    
+      map.drawPolyline({
+        path: paradas,
+        strokeColor: '#405da3',
+        strokeOpacity: 0.6,
+        strokeWeight: 6
+      });  
+    
+  }
+}); 
+}
+
 function agregarMarcador(idEstacion){
-    alert("entro");
-    for(var i = 0; i<estaciones.length;i++){
-        if(estaciones[i].id==idEstacion){
+    
+    
             map.addMarker({
-                lat: estaciones[i].lat,
-                lng: estaciones[i].lon,
-                title: 'Estación Cercana',
+                lat: estaciones[idEstacion].lat,
+                lng: estaciones[idEstacion].lon,
+                title: 'Estación Cercana: '+estaciones[i].Nombre ,
                 infoWindow: {
-                content: '<p>Estación Mas Cercana</p>'
+                content: '<p>Estación Mas Cercana: '+estaciones[i].nombre+'</p>'
                 }
             });
         }
-     }
- }
+     
     
     
     
@@ -154,7 +181,7 @@ function agregarMarcador(idEstacion){
     </head>
     <body>
             <div id="header"><div style="float: left;"><a href="#"><img style="margin-top: 15px; margin-left: 10px;" alt="logo" src="image/icons/LogoGuiaTM.png" height="35" width="100" /></a></div><div style="float: right;"><a href="#"><img style="margin-top: 10px;margin-right: 10px;" alt="logo" src="image/icons/LogoTransmetro.png" height="35" width="135" /></a></div></div>
-            <div></div>
+            <div id="pasos" hidden style="position: absolute; float: right; margin: 0; padding: 0;"></div>
             <div id="mapa"></div>
             <input style="position: absolute; top: 75%; left: 15%" id="submit" type="submit" onclick="paso1()" value="Ver Ruta Paso a Paso"/> 
         

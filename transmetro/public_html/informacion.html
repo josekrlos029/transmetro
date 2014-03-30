@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Transmetro</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/transmetro.css" rel="stylesheet" type="text/css" media="screen"/>
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBOANqhrn5i6-jYE9XqXyaVClI0NvGLOQw&sensor=true&libraries=places">
+    </script>
+        <script src="js/jquery-1.10.2.min.js" type="text/javascript" ></script>
+        <script src="js/mootools-core-1.4.5.js" type="text/javascript" ></script>
+        <script src="js/envios.js" type="text/javascript" ></script>
+        <script src="phonegap.js" type="text/javascript"></script>
+        <script src="js/transmetro.js" type="text/javascript" ></script>
+        <script>
+            document.addEventListener("deviceready", onDeviceReady, false);
+
+    // PhoneGap esta listo
+    //
+    function onDeviceReady() {
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+        var ventana_ancho = $(window).width();
+        var ventana_alto = $(window).height();
+        $("#mapa").css("width",ventana_ancho);
+        $("#mapa").css("height",ventana_alto - 125);
+        $(".border").css("width",ventana_ancho);
+        $("#footer").css("top",ventana_alto-66);
+    }
+
+    // onSuccess Geolocation
+    //
+    function onSuccess(position) {
+        //OBTENGO MI UBICACIÓN MOVIL
+          var punto = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+                localStorage.setItem('ubicacion',punto);
+            //CONFIGURACIÓN DEL MAPA
+                var config = {
+                    zoom:16,
+                    center:punto,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    disableDefaultUI: true 
+                };
+                
+                //INICIALIZO EL MAPA
+                var mapa = new google.maps.Map($('#mapa')[0],config);
+                
+                //DEFINO Y CREO EL MARCADOR DE ACUERDO A MI UBICACIÓN
+                var marker = {
+                    position: punto,
+                    titulo:"mi ubicación",
+                    map: mapa,
+                    animation: google.maps.Animation.DROP,
+                    draggable:false,
+                    icon: "image/icons/Position.png"
+                };
+                
+                var marcador = new google.maps.Marker(marker);
+                marcador.setMap(mapa); 
+                
+                
+                //DEFINIR INPUT PARA REALIZAR LA SGUIENTE OPCIÓN
+                var input = /** @type {HTMLInputElement} */
+                document.getElementById('input');
+                mapa.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
+                var autocomplete = new google.maps.places.Autocomplete(input);
+                autocomplete.bindTo('bounds', mapa);
+                var infowindow = new google.maps.InfoWindow();
+                
+                $("#input").css("margin-top","30px");
+                
+            google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            infowindow.close();
+            //marker.setVisible(false);
+            var place = autocomplete.getPlace();
+            if (!place.geometry) {
+              return;
+            }
+            
+            localStorage.setItem('destino',place.geometry.location);
+            location.href="rutaGeneral.html"; 
+            
+           
+            });
+                
+  }
+                
+    // La función 'callback' onError recibe un objeto `PositionError`.
+    //
+    function onError(error) {
+        alert('código: '    + error.code    + '\n' +
+              'mensaje: ' + error.message + '\n');
+    }
+
+        </script>
+    </head>
+    <body>
+        <div id="header"><div style="float: left;"><a href="#"><img style="margin-top: 15px; margin-left: 10px;" alt="logo" src="image/icons/LogoGuiaTM.png" height="35" width="100" /></a></div><div style="float: right;"><a href="#"><img style="margin-top: 10px;margin-right: 10px;" alt="logo" src="image/icons/LogoTransmetro.png" height="35" width="135" /></a></div></div>
+        <div >
+            <table style="margin-top: 5%; margin-left: 5%; margin-right: 5%; width: 90%;  ">
+                <tr>
+                    <td style="width: 50%; ">
+                        <input type="submit" id="input_horarios"  value="Horarios y Operaciones"/> 
+                    </td>
+                    <td style="width: 50%">
+                        <input type="submit"  id="input_Ruta"  value="Rutas y Mapas"/> 
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">
+                        <input type="submit"  id="input_ModoDePago"  value="Modo de Pago"/> 
+                    </td >
+                    <td style="width: 50%">
+                        <input type="submit"  id="input_Tarjeta"  value="Mi Tarjeta"/> 
+                    </td>
+                </tr>                
+            </table>
+        </div>
+         
+        <div id="footer" style="position: absolute">
+            <table style="width: 100%; height: 60px">
+                <tr>
+                    <td style=" width: 25%; border-right: 1px solid black;"   >                       
+                        <div><a style="margin-left: 30%" href="#"><img src="image/icons/Icono-BuscarBlanco.png" height="auto" width=35%" /></a></div>
+                        <div style="text-align: center; font-size: 11px; font-family: Arial; color: white"> Buscar</div>
+                    </td>   
+                    <td style=" width: 25%; border-right: 1px solid black;" >
+                        <div><a style="margin-left: 30%" href="#"><img src="image/icons/Icono-NotificacionesBlanco.png" height="auto" width=35%" /></a></div>
+                        <div style="text-align: center; font-size: 11px; font-family: Arial; color: white"> Notificaciones</div>
+                    </td>
+                    <td style=" width: 25%; border-right: 1px solid black;" >
+                        <div><a style="margin-left: 30%" href="#"><img src="image/icons/Icono-InformacionBlanco.png" height="auto" width=35%" /></a></div>
+                        <div style="text-align: center; font-size: 11px; font-family: Arial; color: white"> Informacion</div>
+                    </td>
+                    <td style=" width: 25%; " >
+                        <div><a style="margin-left: 30%" href="#"><img src="image/icons/Icono-MiCuentaBlanco.png" height="auto" width=35%" /></a></div>
+                        <div style="text-align: center; font-size: 11px; font-family: Arial; color: white"> Mi Cuenta</div>
+                    </td>
+                </tr>
+            
+            </table> 
+        </div>
+    </body>
+</html>

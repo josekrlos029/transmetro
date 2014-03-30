@@ -12,6 +12,7 @@ body{
     margin: 0;
     height: 100%;
     width: 100%;
+   
 }
 
 #footer{
@@ -45,7 +46,7 @@ body{
 }
 
 #input{
-    background: black;
+    background: url(../image/icons/Boton-Bus-Rojo.png) no-repeat scroll 1px center black;    
     border: none;
     height: 40px;
     width: 200px;    
@@ -59,8 +60,68 @@ body{
     color:white;
     padding-right: 15px;
     
+    
+}
+#input_horarios{
+    background: url(../image/icons/BotonIzquierdoHorarios.png) no-repeat scroll 1px center black;    
+    border: none;
+    height: 50px;
+    width: 100%;    
+    font-family: Arial;
+    border-radius: 10px;
+    border: 1px solid #333;
+    text-align: right;
+    font-size: 15px;
+    color:white;
+    padding-right: 15px;
+    
 }
 
+#input_Ruta{
+    background: url(../image/icons/BotonIzquierdoRutas.png) no-repeat scroll 1px center black;    
+    border: none;
+    height: 50px;
+    width: 100%;    
+    font-family: Arial;
+    border-radius: 10px;
+    border: 1px solid #333;
+    text-align: right;
+    font-size: 15px;
+    color:white;
+    padding-right: 15px;
+    
+}
+
+#input_ModoDePago{
+    background: url(../image/icons/BotonIzquierdoModoDePago.png) no-repeat scroll 1px center black;    
+    border: none;
+    height: 50px;
+    width: 100%;    
+    font-family: Arial;
+    border-radius: 10px;
+    border: 1px solid #333;
+    text-align: right;
+    font-size: 15px;
+    color:white;
+    padding-right: 15px;
+    
+}
+
+#input_Tarjeta{
+    background: url(../image/icons/BotonIzquierdoTarjeta.png) no-repeat scroll 1px center black;    
+    border: none;
+    height: 50px;
+    width: 100%;    
+    font-family: Arial;
+    border-radius: 10px;
+    border: 1px solid #333;
+    text-align: right;
+    font-size: 15px;
+    color:white;
+    
+    padding-right: 15px;
+    
+}
 #submit{
     background: black;
     border: none;
@@ -75,5 +136,44 @@ body{
     font-size: 15px;
     color:white;
     padding-right: 15px;
+    
+}
+
+
+#notificaciones{
+    height: 300px;
+    width: 200px;
+    margin:0;
+   padding: 0;
+}
+
+.titulo_notificacion {
+	text-align: left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #db001b;
+}
+.texto_notificacion p {
+	color: #333;
+}
+.texto_notificacion {
+	color: #333;
+	font-weight: normal;
+}
+
+.texto_notificaciones {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-align: justify;
+}
+.texto_notificacion1 {	color: #333;
+	font-weight: normal;
+}
+
+#pasos{
+    background: black; 
+    opacity:0.8;
+    filter:alpha(opacity=80);
     
 }
