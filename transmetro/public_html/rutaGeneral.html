@@ -163,32 +163,32 @@ function dibujarRuta(paradas){
 
 
 function agregarMarcador(idEstacion){
-    /*
-    var icon="";content ="";
+    
+    var icon="";var content ="";
     if (band==1){
         icon="image/icons/PositionExpressos.png";
-        content= '<p>Estación Mas Cercana: '+estaciones[i].nombre+'</p>';
+        content= '<p>Estación Mas Cercana: '+estaciones[idEstacion].nombre+'</p>';
         band=0;
         alert("b1");
     }else{
         icon="image/icons/Position.png";
         band=1;
-        content ='<p>Estación Mas Cercana a Tu destino: '+estaciones[i].nombre+'</p>';
+        content ='<p>Estación Mas Cercana a Tu destino: '+estaciones[idEstacion].nombre+'</p>';
         alert("b2");
-    }*/
+    
             map.addMarker({
                 lat: estaciones[idEstacion].lat,
                 lng: estaciones[idEstacion].lon,
                 title: 'Estación: '+estaciones[idEstacion].Nombre ,
-                icon: "image/icons/PositionExpressos.png",
+                icon: icon,
                 infoWindow: {
-                content:'<p>Estación Mas Cercana a Tu destino: '+estaciones[idEstacion].nombre+'</p>'
+                content:content
                 }
             });
-            /*
+            
             if(band==0){
                 pasoDestino();
-            }*/
+            }
         }
      
     
