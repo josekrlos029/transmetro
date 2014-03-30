@@ -29,6 +29,7 @@ and open the template in the editor.
         $("#mapa").css("width",ventana_ancho);
         $("#mapa").css("height",ventana_alto - 110);
         $(".border").css("width",ventana_ancho);
+        $("#footer").css("top",ventana_alto-60);
     }
 
     // onSuccess Geolocation
@@ -103,7 +104,7 @@ and open the template in the editor.
         <input id="input" type="text" placeholder="¿Hacia Donde Vas?"/> 
         
          
-        <div id="footer">
+        <div id="footer" style="position: absolute">
             <table style="width: 100%; height: 60px">
                 <tr>
                     <td style=" width: 25%; border-right: 1px solid black;"   >                       
