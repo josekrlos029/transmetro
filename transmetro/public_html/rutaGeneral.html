@@ -30,7 +30,14 @@ $(document).ready(function(){
         $("#footer").css("top",ventana_alto-66);
         var ubicacion=localStorage.getItem('ubicacion');
         var destino=localStorage.getItem('destino');
-     
+         var distancias=[];
+         
+         $.getJSON("http://transmetro.innovardesign.com/Administrador/obtenerParadas",function(result){
+                $.each(result, function (i, item) {
+                calculateDistances(ubicacion,new google.maps.LatLng(item.lat,item.lon));
+         });
+         });
+      
     var coordenadas = ubicacion;
                        
             coordenadas=coordenadas.replace(")","");
@@ -43,8 +50,8 @@ $(document).ready(function(){
         lat: lista[0],
         lng: lista[1]
      });
-     var distancias=[];
     
+    alert(distancias);
     function calculateDistances(start,end) {
             
             var service = new google.maps.DistanceMatrixService();
@@ -76,14 +83,7 @@ $(document).ready(function(){
     }
   }
   }
-     $.getJSON("http://transmetro.innovardesign.com/Administrador/obtenerParadas",function(result){
-                $.each(result, function (i, item) {
-                calculateDistances(ubicacion,new google.maps.LatLng(item.lat,item.lon));
-         });
-         
-         
-         });
-      
+     
     });
             </script>
     </head>
