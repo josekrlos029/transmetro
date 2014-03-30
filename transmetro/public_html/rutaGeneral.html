@@ -17,9 +17,23 @@ and open the template in the editor.
         <script src="js/envios.js" type="text/javascript" ></script>
         <script src="js/transmetro.js" type="text/javascript" ></script>
         <script>
-           var listaDistancias=new array();
-            
-            function calculateDistances(start,end) {
+                      
+$(document).ready(function(){
+    var listaDistancias=new array();
+        var ventana_ancho = $(window).width();
+        var ventana_alto = $(window).height();
+        $("#mapa").css("width",ventana_ancho);
+        $("#mapa").css("height",ventana_alto - 110);
+        $(".border").css("width",ventana_ancho);
+        $("#footer").css("top",ventana_alto-66);
+        var ubicacion=localStorage.getItem('ubicacion');
+        $.getJSON("http://transmetro.innovardesign.com/Administrador/obtenerParadas",function(result){
+                $.each(result, function (i, item) { 
+                calculateDistances(ubicacion,new google.maps.LatLng(item.lat,item.lon));
+        });
+    });
+    
+    function calculateDistances(start,end) {
                 var service = new google.maps.DistanceMatrixService();
                 service.getDistanceMatrix(
                   {
@@ -50,23 +64,6 @@ and open the template in the editor.
             }
           }
       }
-
-$(document).ready(function(){
-    
-        var ventana_ancho = $(window).width();
-        var ventana_alto = $(window).height();
-        $("#mapa").css("width",ventana_ancho);
-        $("#mapa").css("height",ventana_alto - 110);
-        $(".border").css("width",ventana_ancho);
-        $("#footer").css("top",ventana_alto-66);
-        var ubicacion=localStorage.getItem('ubicacion');
-        $.getJSON("http://transmetro.innovardesign.com/Administrador/obtenerParadas",function(result){
-                $.each(result, function (i, item) { 
-                calculateDistances(ubicacion,new google.maps.LatLng(item.lat,item.lon));
-        });
-    });
-    
-
     });
         </script>
     </head>
