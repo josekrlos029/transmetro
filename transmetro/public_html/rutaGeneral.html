@@ -68,14 +68,13 @@ var cont=0;
 function paso1(){
     var ubicacion=localStorage.getItem('ubicacion');
     $.getJSON("http://transmetro.innovardesign.com/Administrador/obtenerParadas",function(result){
+                estaciones = result;
                 $.each(result, function (i, item) {
-                    alert(item.id);
                 calculateDistances(ubicacion,new google.maps.LatLng(item.lat,item.lon));
          });
-         });  
-    alert(distanciaEstaciones[1]);     
-         
+         });          
 }
+alert(estaciones);
     
  function calculateDistances(start,end) {
             
