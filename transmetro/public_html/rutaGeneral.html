@@ -68,6 +68,7 @@ var cont=0;
 var band = 1;
 function paso1(){
     var ubicacion=localStorage.getItem('ubicacion');
+    cont=0;
     $.getJSON("http://transmetro.innovardesign.com/Administrador/obtenerParadas",function(result){
                 estaciones = result;
                 $.each(result, function (i, item) {
