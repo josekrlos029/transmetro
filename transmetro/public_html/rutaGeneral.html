@@ -52,14 +52,14 @@ $(document).ready(function(){
          });
          });
         */
-       
+       var service = new google.maps.DistanceMatrixService();
        for (var i = 10 ; i <=10 ; i++){
            calculateDistances(ubicacion, destino);
        }
        
         function calculateDistances(start,end) {
             
-            var service = new google.maps.DistanceMatrixService();
+            
             
             service.getDistanceMatrix(
               {
