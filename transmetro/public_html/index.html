@@ -22,23 +22,12 @@ and open the template in the editor.
 
     // PhoneGap esta listo
     //
-    function onDeviceReady() {
-        var options ={maximumAge: 3000, timeout: 5000, enableHighAccuracy: true };
-        navigator.geolocation.watchPosition(onSuccess, onError, options);
-        
-        var ventana_ancho = $(window).width();
-        var ventana_alto = $(window).height();
-        $("#mapa").css("width",ventana_ancho);
-        $("#mapa").css("height",ventana_alto - 125);
-        $(".border").css("width",ventana_ancho);
-        $("#footer").css("top",ventana_alto-66);
-    }
-
-    // onSuccess Geolocation
-    //
-    function onSuccess(position) {
-        //OBTENGO MI UBICACIÓN MOVIL
-          var punto = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+    var mapa;
+    
+    function cargarMapa(){
+         navigator.geolocation.getCurrentPosition(function(position){
+             //OBTENGO MI UBICACIÓN MOVIL
+            var punto = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
                 localStorage.setItem('ubicacion',punto);
             //CONFIGURACIÓN DEL MAPA
                 var config = {
@@ -49,20 +38,7 @@ and open the template in the editor.
                 };
                 
                 //INICIALIZO EL MAPA
-                var mapa = new google.maps.Map($('#mapa')[0],config);
-                
-                //DEFINO Y CREO EL MARCADOR DE ACUERDO A MI UBICACIÓN
-                var marker = {
-                    position: punto,
-                    titulo:"mi ubicación",
-                    map: mapa,
-                    animation: google.maps.Animation.DROP,
-                    draggable:false,
-                    icon: "image/icons/Position.png"
-                };
-                
-                var marcador = new google.maps.Marker(marker);
-                marcador.setMap(mapa); 
+                mapa = new google.maps.Map($('#mapa')[0],config);
                 
                 
                 //DEFINIR INPUT PARA REALIZAR LA SGUIENTE OPCIÓN
@@ -88,7 +64,49 @@ and open the template in the editor.
             
            
             });
+
                 
+         }, function(){
+             
+         });
+    }
+    
+    function onDeviceReady() {
+        
+        var ventana_ancho = $(window).width();
+        var ventana_alto = $(window).height();
+        $("#mapa").css("width",ventana_ancho);
+        $("#mapa").css("height",ventana_alto - 125);
+        $(".border").css("width",ventana_ancho);
+        $("#footer").css("top",ventana_alto-66);
+        
+        cargarMapa();
+        
+        
+        var options ={maximumAge: 3000, timeout: 5000, enableHighAccuracy: true };
+        navigator.geolocation.watchPosition(onSuccess, onError, options);
+        
+    }
+
+    // onSuccess Geolocation
+    //
+    function onSuccess(position) {
+        
+        var punto = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+                localStorage.setItem('ubicacion',punto);
+                //DEFINO Y CREO EL MARCADOR DE ACUERDO A MI UBICACIÓN
+                var marker = {
+                    position: punto,
+                    titulo:"mi ubicación",
+                    map: mapa,
+                    animation: google.maps.Animation.DROP,
+                    draggable:false,
+                    icon: "image/icons/Position.png"
+                };
+                
+                var marcador = new google.maps.Marker(marker);
+                marcador.setMap(mapa); 
+                                
   }
                 
     // La función 'callback' onError recibe un objeto `PositionError`.
