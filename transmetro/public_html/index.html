@@ -23,8 +23,9 @@ and open the template in the editor.
     // PhoneGap esta listo
     //
     function onDeviceReady() {
-        var options ={maximumAge:5000, timeout:10000, enableHighAccuary: true};
+        var options ={maximumAge: 3000, timeout: 5000, enableHighAccuracy: true };
         navigator.geolocation.watchPosition(onSuccess, onError, options);
+        
         var ventana_ancho = $(window).width();
         var ventana_alto = $(window).height();
         $("#mapa").css("width",ventana_ancho);
